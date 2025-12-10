@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Dingguo Game</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        /* Page-specific styling: Using .policy-content for consistent container */
+        .policy-content {
+            padding: 80px 10% 120px 10%; 
+            text-align: left;
+            max-width: 800px; /* Smaller width for a concise page */
+            margin: 0 auto;
+            line-height: 1.8;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #333333; 
+        }
+        .policy-content h2 {
+            color: #000080; 
+            border-bottom: 2px solid #DDDDDD;
+            padding-bottom: 5px;
+            margin-bottom: 30px;
+        }
+        .policy-content p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+        .policy-content ul {
+            list-style: none; /* Remove default bullets */
+            padding-left: 0;
+        }
+        .policy-content li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            /* Using a symbol or dot for a clean, code-like list item marker */
+        }
+        .policy-content li::before {
+            content: "// "; /* Code comment style prefix */
+            color: #008000; /* Darker green/blue for the marker */
+            font-family: 'Consolas', monospace;
+            position: absolute;
+            left: 0;
+        }
+        .policy-content a {
+            color: #000080; /* Match heading/footer color */
+            text-decoration: underline;
+        }
+        .policy-content code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: #EEEEEE;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="policy-content">
+        
+        <h2>About DingGuo Game</h2>
+        
+        <ul>
+            <li>
+                We are a group of **Scratch enthusiasts**, and we thank Scratch for providing great programming tools for children. ScratchJr is an introductory tool for children aged 5-7 to learn Scratch, officially provided by Scratch. Compared with Scratch, ScratchJr is more suitable for beginners.
+            </li>
+            <li>
+                We are the initiator of the open-source web version of ScratchJr. Find our project here: 
+                <a href="https://github.com/wangzongjun/ScratchJr" target="_blank">
+                    <code>https://github.com/wangzongjun/ScratchJr</code>
+                </a>
+            </li>
+        </ul>
+
+        <h3>Support & Contact</h3>
+        <p>If you have any questions, please send an email to us:</p>
+        <p>
+            <strong>
+                <a href="mailto:puzzlekids@163.com">
+                    <code>puzzlekids@163.com</code>
+                </a>
+            </strong>
+        </p>
+
+    </div>
+
+    <footer class="footer">
+        <nav>
+            <a href="./index.html" class="footer-button">Home</a>
+            <a href="./privacy-policy.html" class="footer-button">Privacy Policy</a>
+            <a href="./terms-of-service.html" class="footer-button">Terms of Service</a>
+            <a href="./about.html" class="footer-button">About</a>   
+        </nav>
+    </footer>
+
+</body>
+</html>

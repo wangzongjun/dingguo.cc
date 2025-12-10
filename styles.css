@@ -1,0 +1,221 @@
+/* 基础设置：重置和字体 */
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* 使用简洁的无衬线字体 */
+    background-color: #F8F8FF; /* 浅色背景 (Ghost White) */
+    color: #333333; /* 深灰文字 */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* 容器和居中 */
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- 主要标题样式 (应用动画) --- */
+.main-title h1 {
+    font-size: 5vw;
+    color: #000080; /* 深海军蓝，突出显示 */
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+    z-index: 10;
+    
+    /* 1. 页面打开动画 */
+    animation: 
+        fadeInUp 1s ease-out forwards, /* 浮现动画，持续1秒 */
+        /* 2. 页面静止动画 */
+        subtleGlow 4s infinite alternate; /* 光晕呼吸动画，持续4秒，无限交替 */
+
+    opacity: 0; /* 初始隐藏，等待浮现动画 */
+}
+
+/* --- 简洁的副标题或欢迎语 (应用动画) --- */
+.welcome-message p {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 1.1em;
+    color: #555555;
+    margin-top: 0;
+    z-index: 10;
+
+    /* 打字机效果需要设置容器 */
+    overflow: hidden; 
+    white-space: nowrap; /* 文本不换行 */
+    width: 0; /* 初始宽度为0 */
+    
+    /* 1. 页面打开动画 (打字机) */
+    /* 延迟 H1 动画结束后开始 */
+    animation: 
+        typing 2.5s steps(48, end) 1s forwards, /* 2.5秒内以48个步骤打完所有字，延迟1秒开始 */
+        /* 2. 页面静止动画 (脉冲) */
+        pulseColor 6s infinite ease-in-out 3.5s; /* 打字动画结束后开始脉冲动画 */
+
+    border-right: .15em solid #000080; /* 打字机光标 */
+    animation-delay: 1s, 3.5s; /* 确保动画按顺序触发 */
+    animation-fill-mode: forwards, forwards; /* 确保动画结束后保持状态 */
+}
+
+/* 补充：打字机光标闪烁动画 */
+.welcome-message p::after {
+    content: '|'; /* 用作闪烁光标 */
+    display: inline;
+    vertical-align: top;
+    font-weight: bold;
+    color: #000080;
+    animation: 
+        blink-caret .75s step-end infinite; /* 光标闪烁 */
+}
+/* 当打字动画结束后，移除光标的闪烁 */
+.welcome-message p[style*="width: 100%"]::after {
+    animation: none;
+    opacity: 0; /* 或者直接隐藏 */
+}
+
+/* --- 页脚样式 --- */
+.footer {
+    width: 100%;
+    background-color: #EFEFEF; /* 略深于背景的浅灰色 */
+    padding: 15px 0;
+    border-top: 1px solid #CCCCCC;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.footer nav a {
+    color: #000080; /* 深海军蓝 */
+    text-decoration: none;
+    font-size: 0.9em;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border: 1px solid #000080;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.footer nav a:hover {
+    background-color: #000080;
+    color: #FFFFFF; /* 悬停时反色，白色文字 */
+}
+
+/* --- 🌟 背景数学符号样式 (10个符号) 🌟 --- */
+.math-background-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.1; /* 浅色背景下，调低透明度使其更柔和 */
+    color: #808080; /* 中灰色，作为背景纹理 */
+}
+
+.symbol {
+    position: absolute;
+    font-size: 4em; /* 稍微缩小符号，避免喧宾夺主 */
+    animation: float 25s infinite linear; /* 线性漂浮动画，时间略长 */
+}
+
+/* 为 10 个符号设置随机位置和不同的动画延迟 */
+.sigma { top: 10%; left: 5%; font-size: 6em; animation-delay: 2s; }
+.pi { top: 75%; right: 10%; animation-delay: 0s; }
+.integral { bottom: 5%; left: 40%; font-size: 5em; animation-delay: 4s; }
+.bracket { top: 30%; right: 30%; animation-delay: 6s; }
+.e-x { bottom: 35%; left: 15%; font-size: 7em; animation-delay: 8s; }
+.delta { top: 5%; right: 50%; font-size: 4em; animation-delay: 10s; animation-duration: 20s; } /* 增加动画时长，让运动更缓 */
+.alpha { bottom: 50%; left: 50%; font-size: 3em; animation-delay: 12s; animation-duration: 30s; }
+.infinity { top: 50%; left: 5%; font-size: 8em; animation-delay: 14s; }
+.vector { bottom: 10%; right: 25%; font-size: 6em; animation-delay: 16s; animation-duration: 22s; }
+.matrix { top: 60%; left: 30%; font-size: 5.5em; animation-delay: 18s; }
+
+/* 漂浮动画的关键帧 (保持不变，但运动速度在上面设置了不同) */
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-15px, 25px) rotate(3deg); }
+    50% { transform: translate(15px, -15px) rotate(-3deg); }
+    75% { transform: translate(-10px, 20px) rotate(2deg); }
+}
+/* --- 页面打开时的动画关键帧 --- */
+
+/* 1. 浮现效果 (用于 H1) */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. 打字机效果 (用于 P) */
+/* 这个动画依赖于 CSS 伪元素和步骤函数 */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@keyframes blink-caret {
+    50% { border-color: transparent; }
+}
+
+/* --- 页面静止时的循环动画关键帧 --- */
+
+/* 3. 标题微弱光晕/呼吸效果 (用于 H1) */
+@keyframes subtleGlow {
+    0%, 100% {
+        /* 深海军蓝的微弱阴影 */
+        text-shadow: 0 0 2px #000080;
+    }
+    50% {
+        /* 光晕最强时 */
+        text-shadow: 0 0 5px #000080, 0 0 10px #CCCCFF; 
+    }
+}
+
+/* 4. 副标题颜色脉冲效果 (用于 P) */
+@keyframes pulseColor {
+    0%, 100% {
+        color: #555555;
+    }
+    50% {
+        color: #000080; /* 轻微变为标题色 */
+    }
+}
+
+/* --- 鼠标跟随特效 --- */
+.cursor-follower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000080; /* 深海军蓝，与主题色一致 */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.7;
+    transition: transform 0.15s ease-out, opacity 0.3s ease;
+    backdrop-filter: blur(1px);
+}
+
+/* 鼠标移动时的效果 */
+.cursor-follower.moving {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+/* 鼠标点击时的效果 */
+.cursor-follower.clicking {
+    transform: scale(0.8);
+    opacity: 0.6;
+}
