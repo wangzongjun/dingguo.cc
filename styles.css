@@ -194,16 +194,17 @@ body {
     }
 }
 /* --- 鼠标残影特效样式 --- */
-
 .mouse-trail-symbol {
-    position: absolute;
-    pointer-events: none; /* 确保残影不会干扰鼠标点击 */
+    /* 将 absolute 改为 fixed */
+    position: fixed; 
+    pointer-events: none; 
     font-size: 1.2em;
     font-family: 'Consolas', 'Courier New', monospace;
-    opacity: 0; /* 初始隐藏 */
-    color: #000080; /* 深海军蓝 */
-    transform: translate(-50%, -50%); /* 确保中心点位于鼠标位置 */
-    animation: trailFade 1.5s ease-out forwards; /* 动画持续 1.5 秒 */
+    opacity: 0; 
+    color: #000080; 
+    /* 保持中心点校正 */
+    transform: translate(-50%, -50%); 
+    animation: trailFade 1.5s ease-out forwards; 
 }
 
 /* 关键帧：淡出、缩小和轻微漂浮 */

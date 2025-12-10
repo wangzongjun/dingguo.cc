@@ -40,6 +40,19 @@
         </nav>
     </footer>
     <script>
+    document.addEventListener('mousemove', function(e) {
+        // ... (符号数组和随机选择代码保持不变) ...
+        const symbolElement = document.createElement('div');
+        // ... (class 和 textContent 设置保持不变) ...
+
+        // *** 核心修改部分 ***
+        symbolElement.style.left = e.clientX + 'px'; // 使用 clientX
+        symbolElement.style.top = e.clientY + 'px';   // 使用 clientY
+        
+        // ... (append 和 animationend 保持不变) ...
+    });
+</script>
+    <script>
         document.addEventListener('mousemove', function(e) {
             // 随机选择一个符号：二进制、数学运算符或几何符号
             const symbols = ['0', '1', '+', '-', '*', '=', '<', '>', '{', '}', 'Σ', 'π', '∫'];
@@ -51,8 +64,8 @@
             symbolElement.textContent = randomSymbol;
 
             // 2. 设置初始位置
-            symbolElement.style.left = e.pageX + 'px';
-            symbolElement.style.top = e.pageY + 'px';
+            symbolElement.style.left = e.clientX + 'px'; // 使用 clientX
+            symbolElement.style.top = e.clientY + 'px';   // 使用 clientY
             
             // 3. 将元素添加到 body
             document.body.appendChild(symbolElement);
