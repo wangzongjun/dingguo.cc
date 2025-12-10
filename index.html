@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dingguo Game - 探索数字宇宙</title>
+    <title>Dingguo Game</title>
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css"> </head>
 <body>
 
@@ -20,14 +21,13 @@
             <span class="symbol vector">→</span>
             <span class="symbol matrix">⎣ ⎦</span>
         </div>
-        <div class="cursor-follower"></div>
 
         <header class="main-title">
             <h1>Dingguo Game</h1>
         </header>
 
         <main class="welcome-message">
-            <p>// 用逻辑和代码，构建无限的乐趣 //</p>
+            <p>// Building Infinite Fun with Logic and Code //</p>
         </main>
     </div>
 
@@ -39,6 +39,35 @@
             <a href="./about.html" class="footer-button">About</a>   
         </nav>
     </footer>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            // 随机选择一个符号：二进制、数学运算符或几何符号
+            const symbols = ['0', '1', '+', '-', '*', '=', '<', '>', '{', '}', 'Σ', 'π', '∫'];
+            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+
+            // 1. 创建残影元素
+            const symbolElement = document.createElement('div');
+            symbolElement.classList.add('mouse-trail-symbol');
+            symbolElement.textContent = randomSymbol;
+
+            // 2. 设置初始位置
+            symbolElement.style.left = e.pageX + 'px';
+            symbolElement.style.top = e.pageY + 'px';
+            
+            // 3. 将元素添加到 body
+            document.body.appendChild(symbolElement);
+
+            // 4. 在动画结束后移除元素，避免 DOM 膨胀
+            symbolElement.addEventListener('animationend', () => {
+                symbolElement.remove();
+            });
+
+            // 可选：限制生成频率，避免性能问题
+            // 我们可以只在每隔几帧生成一次，这里通过限制代码执行频率来间接实现：
+            // 确保只在鼠标移动速度较快时才触发
+            // 如果性能遇到问题，可以添加一个节流（throttle）函数。
+        });
+    </script>
 
 </body>
 </html>
